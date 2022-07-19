@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiang.mapper.DayDataMapper">
+
+    <select id="getDayTotal" resultType="DayData">
+        select count(*) dayOrder,count(distinct user_id) dayVisitor,sum(total_money) dayTotal, -1 dayGrade
+        from mybatis.orderform
+        where date_format(time, '%d') = #{day}
+    </select>
+
+    <select id="getDayMark" resultType="double">
+        select avg(X.avg_menu)
+        from mybatis.orderform,
+             (select menu_id,avg(mark) as avg_menu
+              from mybatis.menu
+              group by menu_id) as X
+        where X.menu_id=orderform.menu_id and date_format(time, '%d') = #{day};
+    </select>
+
+    <select id="getMonthTotalMoney" resultType="int">
+        select sum(total_money)
+        from mybatis.orderform
+    </select>
+
+    <select id="getMonthTotalOrder" resultType="int">
+        select count(order_id)
+        from mybatis.orderform
+    </select>
+
+    <select id="getMonthTotalVisitor" resultType="int">
+        select COUNT(distinct user_id)
+        from mybatis.orderform
+    </select>
+
+    <select id="getMonthAvgGrade" resultType="double">
+        select avg(mark)
+        from mybatis.menu
+    </select>
+
+    <select id="getAvgNutrition" resultType="AvgNutritionVo">
+        select (case when hour(time) between 6 and 9 then 'morning' when hour(time) between 10 and 13 then 'afternoon' when hour(time) between 16 and 20 then 'evening' end) as timePeriod,sum(calorie)/count( distinct order_id) as Calorie, sum(fat)/count( distinct order_id) as Fat,sum(protein)/count( distinct order_id) as Protein,sum(vitamin)/count( distinct order_id) as Vitamin
+        from mybatis.menu,mybatis.orderform,mybatis.food
+        where menu.menu_id=orderform.menu_id  and food.food_id= menu.food_id and month(time)='6'
+        group by timePeriod;
+    </select>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiang.mapper.OrderMapper">
+    <select id="getOrderListByPage" resultType="Order">
+        select mybatis.orderform.order_id as orderId,mybatis.orderform.user_id as userId, X.content,mybatis.orderform.time,mybatis.orderform.total_money as money from
+            (select menu_id,group_concat(food.name) as content
+             from mybatis.menu,mybatis.food
+             where menu.food_id = food.food_id
+             group by menu.menu_id) as X,mybatis.orderform
+        where X.menu_id=orderform.menu_id
+        order by time desc limit 60
+    </select>
+</mapper>

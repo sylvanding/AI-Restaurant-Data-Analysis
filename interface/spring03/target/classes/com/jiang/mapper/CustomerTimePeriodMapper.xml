@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiang.mapper.CustomerTimePeriodMapper">
+
+    <select id="getPeopleTimeMap" resultType="CustomerTimePeriod">
+        SELECT concat( date_format(time, '%Y-%m-%d %H:' ) , floor( date_format(time, '%i' ) /#{n} ) ) AS timeperiod, count( * ) as num
+        FROM mybatis.orderform
+        WHERE time between #{beginTime} and #{endTime}
+        GROUP BY timeperiod;
+    </select>
+
+    <select id="getThreeTimeMap" resultType="hashmap">
+        select date(time) as time,sum(if(hour(time)between 6 and 9,1,0)) as morning,sum(if(hour(time)between 10 and 14,1,0)) as noon,sum(if(hour(time)between 16 and 21,1,0)) as evening
+        from mybatis.orderform
+        where date_format(time, '%d') = #{n}
+        group by date(time);
+    </select>
+</mapper>

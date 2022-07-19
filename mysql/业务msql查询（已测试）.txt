@@ -1,0 +1,58 @@
+各个菜品某天的评分：【已测试】
+select temp.food_id,name,avg_mark from food,(select food_id,avg(mark)as avg_mark from menu where menu_id in(select menu_id from orderform where date(time)='2022-06-12' group BY  time) group by food_id) as temp where food.food_id=temp.food_id;
+
+某天订单的平均评分：【已测试】
+select avg(X.result1) as result from(select menu_id,avg(mark) as result1 from menu where menu_id in (select menu_id from orderform where date(time)='2022-06-22') group by menu_id) X;
+
+每天的总交易额：【已测试，有更改】
+select date(time)as time, sum(total_money)
+from orderform
+group by date(time);
+
+
+口碑最好的n道菜:【已测试】
+select food.food_id,food.name,avg(mark) as avg_mark
+from menu,food
+where menu.food_id=food.food_id
+group by food_id order by avg_mark desc;
+
+口碑最不好的n道菜:【已测试】
+select food.food_id,food.name,avg(mark) as avg_mark
+from menu,food
+where menu.food_id=food.food_id
+group by food_id order by avg_mark asc;
+
+最热门的n道菜:【已测试】
+select food.food_id,food.name,count(*) as order_num
+from menu,food
+where menu.food_id=food.food_id
+group by food_id order by order_num desc;
+
+最冷门的n道菜:【已测试】
+select food.food_id,food.name,count(*) as order_num
+from menu,food
+where menu.food_id=food.food_id
+group by food_id order by order_num asc;
+
+每天的各种营养平均值:【已测试】
+select date(time) as time, sum(calorie)/count(distinct user_id) as avg_calorie, sum(carbohydrate)/count(distinct user_id) as avg_carbohydrate, sum(fat)/count(distinct user_id) avg_fat, sum(protein)/count(distinct user_id) as avg_protein, sum(vitamin)/count(distinct user_id) as avg_vitamin
+from menu,food,orderform
+where menu.menu_id=orderform.menu_id  and food.food_id= menu.food_id  group by date(time);
+
+每天的早中晚的顾客数量:【已测试】
+select date(time) as time,sum(if(hour(time)>=6 and hour(time)<10,1,0)) as morning_num,sum(if(hour(time)>=10 and hour(time)<14,1,0)) as noon_num,sum(if(hour(time)>=16 and hour(time)<21,1,0)) as evening_num
+from orderform
+group by date(time);
+
+
+获取某天每小时内的平均营养【已测试】
+select hour(time) as hour,sum(protein)/count(distinct orderform.order_id) as avg_protein,sum(calorie)/count(distinct orderform.order_id) as avg_calorie,sum(carbohydrate)/count(distinct orderform.order_id) as avg_carbohydrate,sum(fat)/count(distinct orderform.order_id) as avg_fat,sum(vitamin)/count(distinct orderform.order_id) as avg_vitamin
+from menu,orderform,food
+where menu.menu_id=orderform.menu_id  and food.food_id= menu.food_id and date(time)='2022-06-01'
+group by hour(time);
+
+
+
+
+
+

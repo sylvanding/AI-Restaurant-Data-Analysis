@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AI-Restaurant Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- DataTables -->
+    <link href="assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+    <!-- My Css-->
+    <link href="assets/css/myCss.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!-- Begin layout-wrapper -->
+<div id="layout-wrapper">
+    <!-- begin main content-->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="web-name mb-sm-0" onclick="location.reload();"><i class="fas fa-chart-line"></i>
+                                AI-Restaurant Dashboard</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-8">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <marquee class="alert alert-danger">Welcome admin ! |
+                                https://github.com/sylvanding/AI-Restaurant-Data-Analysis | 07-20-2022
+                            </marquee>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+                <!-- start card only with number -->
+                <div class="row">
+                    <!-- start Daily Earnings -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h4 class="card-title text-muted">Daily Earnings</h4>
+                                <h2 class="mt-3 mb-2"><i class="mdi mdi-arrow-down text-danger me-2"
+                                                         id="daily-earnings-mark"></i>
+                                    <b>$</b> <b id="daily-earnings-amount">8952</b>
+                                </h2>
+                                <p class="text-muted mb-0 mt-3"><b id="daily-earnings-percentage">48%</b> From Last
+                                    Day</p>
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true"
+                                     title="<b>Daily Earnings</b> shows total earnings on a given day and compares it to the past day's.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Daily Earnings -->
+                    <!-- start Daily Orders -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h4 class="card-title text-muted">Daily Orders</h4>
+                                <h2 class="mt-3 mb-2"><i class="mdi mdi-arrow-up text-success me-2"
+                                                         id="daily-orders-mark"></i>
+                                    <b id="daily-orders-amount">430</b>
+                                </h2>
+                                <p class="text-muted mb-0 mt-3"><b id="daily-orders-percentage">56%</b> From
+                                    Last Day</p>
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true"
+                                     title="<b>Daily Orders</b> shows total amount of orders on a given day and compares it to the past day's.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Daily Orders -->
+                    <!-- start Daily Visitors -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h4 class="card-title text-muted">Daily Visitors</h4>
+                                <h2 class="mt-3 mb-2"><i class="mdi mdi-arrow-down text-danger me-2"
+                                                         id="daily-visitors-mark"></i>
+                                    <b id="daily-visitors-amount">320</b>
+                                </h2>
+                                <p class="text-muted mb-0 mt-3"><b id="daily-visitors-percentage">21%</b> From Last
+                                    24 Hours</p>
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true"
+                                     title="<b>Daily Visitors</b> shows total amount of visitors on a given day and compares it to the past 24 hours'.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Daily Visitors -->
+                    <!-- start Daily Avg. Rating -->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h4 class="card-title text-muted">Daily Avg. Rating</h4>
+                                <h2 class="mt-3 mb-2"><i class="mdi mdi-arrow-up text-success me-2"
+                                                         id="daily-rating-mark"></i>
+                                    <b id="daily-rating-amount">4.3</b>
+                                </h2>
+                                <p class="text-muted mb-0 mt-3"><b id="daily-rating-percentage">20%</b> From
+                                    Last 24 Hours</p>
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true"
+                                     title="<b>Daily Avg. Rating</b> shows average rating for all dishes on a given day and compares it to the past 24 hours'.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Daily Avg. Rating -->
+                </div>
+                <!-- end card only with number -->
+
+                <!-- start card with Area Chart -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mt-0 card-title">Daily Transaction Events</h4>
+                                <ul class="list-inline d-flex justify-content-around mt-3">
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><i class="fas fa-dollar-sign"></i> <b
+                                                id="total-income">3654</b></h5>
+                                        <p class="text-muted mb-0">Total Income</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><i class="fas fa-receipt"></i> <b
+                                                id="total-orders">954</b>
+                                        </h5>
+                                        <p class="text-muted mb-0">Total Orders</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><i class="fas fa-user"></i> <b
+                                                id="total-visitors">8462</b>
+                                        </h5>
+                                        <p class="text-muted mb-0">Total Visitors</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><i class="fas fa-star"></i> <b
+                                                id="avg-rating">4.9</b></h5>
+                                        <p class="text-muted mb-0">Avg. Rating</p>
+                                    </li>
+                                </ul>
+                                <div class="apex-charts" dir="ltr" id="daily-transaction-events-Area-Chart"></div>
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true"
+                                     title="<b>Daily Transaction Events</b> shows total income, amount of orders, number of visitors and average rating for all dishes during this month. Then it renders Area Chart with the normalized datasets, which illustrates the trend during the period.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card with Area Chart -->
+
+                <!-- start Multiple Radial Bar Charts -->
+                <div class="row">
+                    <!-- start card with Multiple Radial Bar Charts for breakfasts -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mt-0 card-title"><i class="fas fa-coffee"></i> Breakfasts Nutrition Scores
+                                </h4>
+                                <ul class="list-inline d-flex justify-content-around mt-3">
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="breakfasts_calorie">0.44</b> Cal</h5>
+                                        <p class="mb-0 text-center nutrition-label Calorie-label">Calorie</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="breakfasts_fat">0.56</b> g</h5>
+                                        <p class="mb-0 text-center nutrition-label Fat-label">Fat</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="breakfasts_protein">0.78</b> g</h5>
+                                        <p class="mb-0 text-center nutrition-label Protein-label">Protein</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="breakfasts_vitamin">0.12</b> g</h5>
+                                        <p class="mb-0 text-center nutrition-label Vitamin-label">Vitamin</p>
+                                    </li>
+                                </ul>
+                                <div id="radial_chart_breakfasts" class="apex-charts" dir="ltr"
+                                     style="height: 300px"></div>
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true"
+                                     title="<b>Breakfasts Nutrition Scores</b> shows average nutrition intake for breakfast and compares it to the optimal intake by Multiple Radial Bar Chart.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card with Multiple Radial Bar Charts for breakfasts -->
+
+                    <!-- start card with Multiple Radial Bar Charts for lunches -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mt-0 card-title"><i class="fas fa-sun"></i> Lunches Nutrition Scores</h4>
+                                <ul class="list-inline d-flex justify-content-around mt-3">
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="lunches_calorie">0.44</b> Cal</h5>
+                                        <p class="mb-0 text-center nutrition-label Calorie-label">Calorie</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="lunches_fat">0.56</b> g</h5>
+                                        <p class="mb-0 text-center nutrition-label Fat-label">Fat</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="lunches_protein">0.78</b> g</h5>
+                                        <p class="mb-0 text-center nutrition-label Protein-label">Protein</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="lunches_vitamin">0.12</b> g</h5>
+                                        <p class="mb-0 text-center nutrition-label Vitamin-label">Vitamin</p>
+                                    </li>
+                                </ul>
+                                <div id="radial_chart_lunches" class="apex-charts" dir="ltr"
+                                     style="height: 300px"></div>
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true"
+                                     title="<b>Lunches Nutrition Scores</b> shows average nutrition intake for lunch and compares it to the optimal intake by Multiple Radial Bar Chart.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card with Multiple Radial Bar Charts for lunches -->
+
+                    <!-- start card with Multiple Radial Bar Charts for dinners -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mt-0 card-title"><i class="fas fa-moon"></i> Dinners Nutrition Scores</h4>
+                                <ul class="list-inline d-flex justify-content-around mt-3">
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="dinners_calorie">0.44</b> Cal</h5>
+                                        <p class="mb-0 text-center nutrition-label Calorie-label">Calorie</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="dinners_fat">0.56</b> g</h5>
+                                        <p class="mb-0 text-center nutrition-label Fat-label">Fat</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="dinners_protein">0.78</b> g</h5>
+                                        <p class="mb-0 text-center nutrition-label Protein-label">Protein</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 class="text-center"><b id="dinners_vitamin">0.12</b> g</h5>
+                                        <p class="mb-0 text-center nutrition-label Vitamin-label">Vitamin</p>
+                                    </li>
+                                </ul>
+                                <div id="radial_chart_dinners" class="apex-charts" dir="ltr"
+                                     style="height: 300px"></div>
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true"
+                                     title="<b>Dinners Nutrition Scores</b> shows average nutrition intake for dinner and compares it to the optimal intake by Multiple Radial Bar Chart.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card with Multiple Radial Bar Charts for dinners -->
+                </div>
+                <!-- end Multiple Radial Bar Charts -->
+
+                <!-- start Rating Progress Bars -->
+                <div class="row">
+                    <!-- start Rating Progress Bars: Dishes with Popularity -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-4 mt-0 card-title"><i class="fas fa-heart"></i> Dishes with Popularity
+                                </h4>
+
+
+                                <p class="font-600 mb-1">鸭皮卷<span class="text-primary float-end"><b>66.94%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 66%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">柠檬手撕鸡<span class="text-primary float-end"><b>66.51%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 66%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">糖醋锅包肉<span class="text-primary float-end"><b>66.49%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 66%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">卤鸡腿<span class="text-primary float-end"><b>66.34%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 66%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">椒汁腐竹<span class="text-primary float-end"><b>66.26%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 66%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">烧麦<span class="text-primary float-end"><b>66.13%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 66%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">咖喱牛腩<span class="text-primary float-end"><b>66.12%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 66%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">千页豆腐<span class="text-primary float-end"><b>66.02%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 66%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">水煮柠檬鱼<span class="text-primary float-end"><b>66.00%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 66%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">煮花生<span class="text-primary float-end"><b>65.98%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary progress-bar-animated"
+                                         role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 65%;"></div>
+                                </div>
+
+
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true" title=""
+                                     data-bs-original-title="<b>Dishes with Popularity</b> shows 10 dishes purchased most and their respectively high ratings.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Rating Progress Bars: Dishes with Popularity -->
+
+                    <!-- start Rating Progress Bars: Least Popular Dishes -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-4 mt-0 card-title"><i class="fas fa-heart-broken"></i> Least Popular
+                                    Dishes</h4>
+
+
+                                <p class="font-600 mb-1">煮黄豆<span class="text-danger float-end"><b>63.28%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.28" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.28%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">韭菜饼<span class="text-danger float-end"><b>63.47%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.47" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.47%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">素海带丝<span class="text-danger float-end"><b>63.60%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.60" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.60%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">八宝粥<span class="text-danger float-end"><b>63.75%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.75" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.75%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">清蒸鱼片<span class="text-danger float-end"><b>63.78%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.78" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.78%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">红枣银耳汤<span class="text-danger float-end"><b>63.78%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.78" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.78%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">西芹炒木耳<span class="text-danger float-end"><b>63.87%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.87" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.87%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">西红柿炒蛋<span class="text-danger float-end"><b>63.91%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.91" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.91%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">炒面<span class="text-danger float-end"><b>63.94%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.94" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.94%;"></div>
+                                </div>
+
+                                <p class="font-600 mb-1">素胡萝卜<span class="text-danger float-end"><b>63.99%</b></span>
+                                </p>
+                                <div class="progress  mb-3">
+                                    <div class="progress-bar progress-bar-striped progress-bar-primary bg-danger progress-bar-animated"
+                                         role="progressbar" aria-valuenow="63.99" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 63.99%;"></div>
+                                </div>
+
+
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true" title=""
+                                     data-bs-original-title="<b>Least Popular Dishes</b> shows 10 dishes rated worst and their respectively low ratings.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Rating Progress Bars: Least Popular Dishes -->
+                </div>
+                <!-- end Rating Progress Bars -->
+
+                <!-- start Order Data Table -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3"><i class="fas fa-list-ul"></i> Recent Orders</h4>
+                                <table id="alternative-page-datatable" class="table dt-responsive nowrap w-100">
+                                    <thead>
+                                    <tr>
+                                        <th>UID</th>
+                                        <th>Order ID</th>
+                                        <th>Contents</th>
+                                        <th>Time</th>
+                                        <th>Consumption</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr><td>381979</td><td>648911</td><td>咸菜,素炒花菜,香炸鸡柳</td><td>2022-06-30 20:59:00</td><td>$8.50</td></tr>
+                                    <tr><td>784733</td><td>454898</td><td>炒面,黄焖鸡</td><td>2022-06-30 20:57:00</td><td>$11.00</td></tr>
+                                    <tr><td>482848</td><td>663707</td><td>西红柿蛋汤,白馒头,香煎豆腐,家常豆腐</td><td>2022-06-30 20:57:00</td><td>$4.45</td></tr>
+                                    <tr><td>533014</td><td>681042</td><td>扬州炒饭,美味土豆条</td><td>2022-06-30 20:57:00</td><td>$7.50</td></tr>
+                                    <tr><td>232887</td><td>842017</td><td>清蒸金针菇,干锅鸡块,美味土豆条</td><td>2022-06-30 20:57:00</td><td>$11.50</td></tr>
+                                    <tr><td>551988</td><td>849728</td><td>八宝粥,煮黄豆,八宝粥</td><td>2022-06-30 20:57:00</td><td>$5.00</td></tr>
+                                    <tr><td>50731</td><td>906239</td><td>咸菜,水煮蛋</td><td>2022-06-30 20:56:00</td><td>$2.00</td></tr>
+                                    <tr><td>207062</td><td>973222</td><td>素炒花菜,素炒豆芽,卤蛋,素菜炒蛋类</td><td>2022-06-30 20:54:00</td><td>$6.00</td></tr>
+                                    <tr><td>350625</td><td>410613</td><td>素炒土豆丝,稀饭</td><td>2022-06-30 20:53:00</td><td>$1.50</td></tr>
+                                    <tr><td>892135</td><td>830964</td><td>黄焖鸡,蒜香花蛤,瓦罐煨汤,毛豆炒肉丝</td><td>2022-06-30 20:53:00</td><td>$22.00</td></tr>
+                                    <tr><td>232833</td><td>842735</td><td>青菜瘦肉粥,清蒸太阳蛋</td><td>2022-06-30 20:53:00</td><td>$8.00</td></tr>
+                                    <tr><td>851004</td><td>473885</td><td>素炒土豆丝,肉包,肉包</td><td>2022-06-30 20:52:00</td><td>$6.00</td></tr>
+                                    <tr><td>561759</td><td>942185</td><td>咖喱牛腩,水煮蛋</td><td>2022-06-30 20:52:00</td><td>$8.00</td></tr>
+                                    <tr><td>154467</td><td>492407</td><td>干锅鸡块,尖椒炒豆干,香炸鸡柳</td><td>2022-06-30 20:50:00</td><td>$13.00</td></tr>
+                                    <tr><td>528330</td><td>554943</td><td>茶叶蛋,娃娃菜,卤鸡腿,青菜瘦肉粥</td><td>2022-06-30 20:50:00</td><td>$12.70</td></tr>
+                                    <tr><td>651934</td><td>227929</td><td>奶黄包,炒上海青</td><td>2022-06-30 20:49:00</td><td>$3.00</td></tr>
+                                    <tr><td>612878</td><td>665960</td><td>西芹炒香肠,清蒸排骨</td><td>2022-06-30 20:49:00</td><td>$10.00</td></tr>
+                                    <tr><td>814021</td><td>505711</td><td>香炸鸡米花,西红柿炒蛋,糖醋锅包肉</td><td>2022-06-30 20:48:00</td><td>$13.50</td></tr>
+                                    <tr><td>951485</td><td>116458</td><td>香炸鸡米花,清炒莴笋丝,叉烧包</td><td>2022-06-30 20:47:00</td><td>$11.50</td></tr>
+                                    <tr><td>739594</td><td>386518</td><td>京酱肉丝,红糖馒头,五香条</td><td>2022-06-30 20:47:00</td><td>$14.00</td></tr>
+                                    <tr><td>485919</td><td>576060</td><td>烧麦,花卷,口水鸡</td><td>2022-06-30 20:47:00</td><td>$8.20</td></tr>
+                                    <tr><td>126207</td><td>939100</td><td>烧麦,白菜</td><td>2022-06-30 20:45:00</td><td>$2.50</td></tr>
+                                    <tr><td>57757</td><td>323707</td><td>柠檬手撕鸡,西红柿蛋汤,稀饭</td><td>2022-06-30 20:44:00</td><td>$8.00</td></tr>
+                                    <tr><td>50125</td><td>589963</td><td>西红柿蛋汤,清蒸金针菇</td><td>2022-06-30 20:44:00</td><td>$4.50</td></tr>
+                                    <tr><td>655251</td><td>207101</td><td>糖醋肉,八宝粥,鱼香肉丝</td><td>2022-06-30 20:42:00</td><td>$16.00</td></tr>
+                                    <tr><td>612802</td><td>786271</td><td>椒盐虾,榨菜,蒜香花蛤</td><td>2022-06-30 20:42:00</td><td>$14.00</td></tr>
+                                    <tr><td>733515</td><td>949178</td><td>炒米粉,烧麦</td><td>2022-06-30 20:41:00</td><td>$6.50</td></tr>
+                                    <tr><td>581623</td><td>900321</td><td>香煎豆腐,紫薯包,椒盐鸭翅,素海带丝</td><td>2022-06-30 20:40:00</td><td>$11.00</td></tr>
+                                    <tr><td>485852</td><td>942741</td><td>西红柿炒蛋,椒盐虾,糖醋肉,干煎秋刀鱼</td><td>2022-06-30 20:40:00</td><td>$20.50</td></tr>
+                                    <tr><td>781688</td><td>183640</td><td>卤鸡腿,稀饭,煮花生,流沙包</td><td>2022-06-30 20:39:00</td><td>$8.50</td></tr>
+                                    <tr><td>739275</td><td>729836</td><td>千页豆腐,宫保鸡丁,酱瓜</td><td>2022-06-30 20:39:00</td><td>$10.50</td></tr>
+                                    <tr><td>147059</td><td>751234</td><td>卤蛋,红烧鸭肉,素炒土豆丝</td><td>2022-06-30 20:39:00</td><td>$8.50</td></tr>
+                                    <tr><td>650037</td><td>251900</td><td>清炒莴笋丝,千页豆腐</td><td>2022-06-30 20:38:00</td><td>$6.00</td></tr>
+                                    <tr><td>241336</td><td>836884</td><td>韭菜饼,清蒸太阳蛋,西红柿炒蛋,宫保鸡丁</td><td>2022-06-30 20:38:00</td><td>$15.00</td></tr>
+                                    <tr><td>560118</td><td>867790</td><td>西芹炒木耳,蒜香花蛤,西芹炒培根</td><td>2022-06-30 20:38:00</td><td>$14.00</td></tr>
+                                    <tr><td>431018</td><td>911429</td><td>水煮牛肉羹,鱼香肉丝</td><td>2022-06-30 20:38:00</td><td>$14.00</td></tr>
+                                    <tr><td>864164</td><td>424183</td><td>山药炒木耳,清蒸排骨</td><td>2022-06-30 20:37:00</td><td>$10.50</td></tr>
+                                    <tr><td>951180</td><td>216232</td><td>卤鸡腿,卤豆腐</td><td>2022-06-30 20:36:00</td><td>$6.00</td></tr>
+                                    <tr><td>967848</td><td>836671</td><td>酱瓜,叉烧包,毛豆炒腊肠,贡丸汤</td><td>2022-06-30 20:35:00</td><td>$11.00</td></tr>
+                                    <tr><td>762788</td><td>220012</td><td>黄焖鸡,酱香鸭,咖喱牛腩,烧麦</td><td>2022-06-30 20:33:00</td><td>$20.50</td></tr>
+                                    <tr><td>762790</td><td>267669</td><td>姜母大鸭腿,紫薯包</td><td>2022-06-30 20:33:00</td><td>$10.00</td></tr>
+                                    <tr><td>65320</td><td>405925</td><td>清蒸太阳蛋,煮黄豆,炒南瓜</td><td>2022-06-30 20:33:00</td><td>$7.00</td></tr>
+                                    <tr><td>617445</td><td>522057</td><td>西芹炒培根,扬州炒饭</td><td>2022-06-30 20:33:00</td><td>$10.00</td></tr>
+                                    <tr><td>648602</td><td>264863</td><td>红烧狮子头,爆炒鸡小肚,清蒸排骨,毛豆炒腊肠</td><td>2022-06-30 20:31:00</td><td>$23.00</td></tr>
+                                    <tr><td>387905</td><td>482934</td><td>柠檬手撕鸡,素炒土豆丝</td><td>2022-06-30 20:29:00</td><td>$8.00</td></tr>
+                                    <tr><td>81283</td><td>641840</td><td>沙茶豆腐角,水煮柠檬鱼</td><td>2022-06-30 20:29:00</td><td>$8.50</td></tr>
+                                    <tr><td>463087</td><td>948399</td><td>清蒸鱼片,咖喱牛腩,素白萝卜,美味土豆条</td><td>2022-06-30 20:27:00</td><td>$16.50</td></tr>
+                                    <tr><td>286368</td><td>670213</td><td>爆炒鸡小肚,干煎秋刀鱼,素炒花菜,贡丸汤</td><td>2022-06-30 20:25:00</td><td>$13.50</td></tr>
+                                    <tr><td>869557</td><td>167149</td><td>炒白果,炒白果</td><td>2022-06-30 20:24:00</td><td>$10.00</td></tr>
+                                    <tr><td>109681</td><td>192045</td><td>香煎豆腐,素菜炒蛋类,美味土豆条,地三鲜</td><td>2022-06-30 20:23:00</td><td>$9.50</td></tr>
+                                    <tr><td>580129</td><td>863307</td><td>素炒青瓜,清炒莴笋丝,萝卜干炒蛋,宫保鸡丁</td><td>2022-06-30 20:23:00</td><td>$12.00</td></tr>
+                                    <tr><td>850045</td><td>54707</td><td>椒盐虾,糖醋肉,素炒花菜,素炒西兰花</td><td>2022-06-30 20:22:00</td><td>$17.50</td></tr>
+                                    <tr><td>20101</td><td>878992</td><td>素炒西兰花,卤蛋</td><td>2022-06-30 20:22:00</td><td>$3.50</td></tr>
+                                    <tr><td>637186</td><td>86282</td><td>椒盐鸭翅,红糖馒头,蒜香花蛤,柠檬手撕鸡</td><td>2022-06-30 20:20:00</td><td>$20.00</td></tr>
+                                    <tr><td>274905</td><td>602571</td><td>红烧肉,炸鸡腿</td><td>2022-06-30 20:17:00</td><td>$12.00</td></tr>
+                                    <tr><td>951330</td><td>950973</td><td>酱香鸭,鸭皮卷</td><td>2022-06-30 20:16:00</td><td>$11.00</td></tr>
+                                    <tr><td>586885</td><td>320216</td><td>炒南瓜,素菜蛋汤</td><td>2022-06-30 20:15:00</td><td>$1.50</td></tr>
+                                    <tr><td>738531</td><td>725562</td><td>姜母大鸭腿,口水鸡</td><td>2022-06-30 20:15:00</td><td>$14.00</td></tr>
+                                    <tr><td>930275</td><td>207507</td><td>爆炒鸡小肚,贡丸汤,肉包,尖椒炒豆干</td><td>2022-06-30 20:14:00</td><td>$11.50</td></tr>
+                                    <tr><td>928266</td><td>240110</td><td>沙茶豆腐角,素菜蛋汤,青菜瘦肉粥</td><td>2022-06-30 20:14:00</td><td>$5.00</td></tr>
+
+                                    </tbody>
+                                </table>
+
+                                <div class="position-absolute top-0 end-0 mt-1 me-1" data-bs-toggle="tooltip"
+                                     data-bs-placement="top" data-bs-html="true"
+                                     title="<b>Recent Orders</b> shows 60 latest orders. This module also provides search box and sorting function.">
+                                    <i class="fas fa-info-circle info-module text-info"></i>
+                                </div>
+                            </div><!-- end card body-->
+                        </div><!-- end card -->
+                    </div><!-- end col-->
+                </div>
+                <!-- end Order Data Table -->
+
+                <!-- start footer -->
+                <div class="row">
+                    <div class="col text-center">
+                        <span class="m-1" style="cursor: pointer;"
+                              onclick="location.href='http://sylvanding.github.io/AI-Restaurant-Data-Analysis/';">2022© 智慧食堂数据分析系统.</span>
+                        <br>
+                        <span class="m-1" style="cursor: pointer;"
+                              onclick="location.href='https://github.com/sylvanding';">Designed by © Sylvan Ding</span>
+                    </div>
+                </div>
+                <!-- end footer -->
+            </div>
+        </div><!-- End Page-content -->
+    </div>
+    <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<!-- jquery js -->
+<script src="assets/js/jquery.min.js"></script>
+
+<!--  bootstrap bundle js -->
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<!-- Required datatable js -->
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- tooltips init -->
+<script src="assets/js/tooltips.init.js"></script>
+
+<!-- daily data init -->
+<script src="assets/js/dailydata.init.js"></script>
+
+<!-- apexcharts -->
+<script src="assets/js/apexcharts.min.js"></script>
+<!-- apexcharts init -->
+<script src="assets/js/apexcharts.init.js"></script>
+
+<!-- datatables init -->
+<script src="assets/js/datatables.init.js"></script>
+</body>
+
+</html>

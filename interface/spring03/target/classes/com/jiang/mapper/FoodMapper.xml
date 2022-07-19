@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiang.mapper.FoodMapper">
+    <!--口碑最好的num道菜-->
+    <select id="getBestFood" resultType="Food">
+        select food.food_id as id,food.name as name,count(*) as num,avg(mark) as mark
+        from mybatis.menu,mybatis.food
+        where menu.food_id=food.food_id
+        group by menu.food_id order by mark desc limit #{num};
+    </select>
+
+    <!--口碑最差的num道菜-->
+    <select id="getWorstFood" resultType="Food">
+        select food.food_id as id,food.name as name,count(*) as num,avg(mark) as mark
+        from mybatis.menu,mybatis.food
+        where menu.food_id=food.food_id
+        group by menu.food_id order by mark limit #{num};
+    </select>
+
+    <!--卖的最多的n道菜-->
+    <select id="getMostFood" resultType="Food">
+        select food.food_id as id,food.name as name,count(*) as num,avg(mark) as mark
+        from mybatis.menu,mybatis.food
+        where menu.food_id=food.food_id
+        group by menu.food_id order by num desc limit #{num};
+    </select>
+
+    <!--买的最少的n道菜-->
+    <select id="getLeastFood" resultType="Food">
+        select food.food_id as id,food.name as name,count(*) as num,avg(mark) as mark
+        from mybatis.menu,mybatis.food
+        where menu.food_id=food.food_id
+        group by menu.food_id order by num limit #{num};
+    </select>
+</mapper>

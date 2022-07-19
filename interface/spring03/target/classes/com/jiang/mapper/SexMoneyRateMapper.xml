@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiang.mapper.SexMoneyRateMapper">
+
+    <select id="getMoneyRateBySex" resultType="SexMoneyRate">
+        SELECT gender as sex, avg(total_money) as averageOrderMoney
+        from mybatis.orderform NATURAL JOIN mybatis.user
+        WHERE gender=#{sex};
+    </select>
+
+</mapper>

@@ -1,0 +1,42 @@
+.nutrition-label::before {
+    content: "O  ";
+}
+
+.Calorie-label {
+    color: #5664d2;
+}
+
+.Fat-label {
+    color: #fcb92c;
+}
+
+.Protein-label {
+    color: #1cbb8c;
+}
+
+.Vitamin-label {
+    color: #ff3d60;
+}
+
+.alert {
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.card {
+    transition: all .3s linear;
+}
+
+.card:hover {
+    box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, .1);
+}
+
+.info-module {
+    cursor: pointer;
+!important;
+}
+
+.web-name {
+    cursor: pointer;
+!important;
+}
