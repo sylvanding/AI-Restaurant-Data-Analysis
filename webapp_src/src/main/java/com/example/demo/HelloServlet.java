@@ -6,10 +6,11 @@ import javax.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
+
     private String message;
 
     public void init() {
-        message = "丁纪翔 1925102007 | 骆华钦 1925103027 | 陈鑫 1925103005 | 梁恺恒 1925103021 | 姜宇晨 1925102018";
+        message = "丁纪翔 1925102007 | 骆华钦 1925103027 | 陈鑫 1925103005 | 梁恺恒 1925103021 | 姜宇晨 1925102018 | 张聿涵 1925102045“;
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

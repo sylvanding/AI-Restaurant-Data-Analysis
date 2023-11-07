@@ -30,6 +30,7 @@ public class LeastPopularDishes {
             }
             reader.close();
         }
+
         connection.disconnect();
         JSONArray jsonArray = JSONObject.parseArray(String.valueOf(msg));
         this.least_popular_dishes_names = new String[jsonArray.size()];
